@@ -24,6 +24,12 @@ app.get("/api/friends", function(req, res) {
             math += Math.abs(friends[i].scores[j] - urScore[j]);
         }
         // assign the match stuff to the empty variable????
+        if (math < totalMath) {
+
+            totalMath = diff;
+            matchName = friends[i].name;
+            matchPhoto = friends[i].photo;
+        }
     }
 
     friends.push(newFriend);
