@@ -20,7 +20,7 @@ module.exports = function (app) {
         //these get called in survey.html
         var matchName = "";
         var matchPhoto = "";
-        var totalMath = 40; //5 possible responses, 10 questions, 5-1 = 4, 4 * 10 = 40 , 40 is the largest difference someone can have 
+        var totalMath = 56; //5 possible responses, 14 questions, 5-1 = 4, 4 * 14 = 56 , 56 is the largest difference someone can have 
 
         for (i = 0; i < friends.length; i++) {
             var math = 0;
