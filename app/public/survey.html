@@ -157,34 +157,68 @@
         <br>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary" id="submit"><i class="fa fa-check-circle"
-                aria-hidden="true"></i>
+        <button type="submit" class="btn btn-primary" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
             Submit</button>
 
 
         <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">You are most like...</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">You are most like...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="matchName"></div>
+                        <div id="matchPhoto"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  <p>Match will go here</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
 
-          <hr>
+        <hr>
 
     </div>
-    
+
+    <script type="text/javascript">
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    $("#q1").val().trim(),
+                    $("#q2").val().trim(),
+                    $("#q3").val().trim(),
+                    $("#q4").val().trim(),
+                    $("#q5").val().trim(),
+                    $("#q6").val().trim(),
+                    $("#q7").val().trim(),
+                    $("#q8").val().trim(),
+                    $("#q9").val().trim(),
+                    $("#q10").val().trim()
+                ]
+            }
+
+            $.post('/api/friends', newFriend)
+                .then(function (data) {
+                    console.log("Added data ");
+                    console.log(data);
+
+                    $("#matchName").html(data.matchName);
+                    $("#matchPhoto").attr("src", data.matchPhoto);
+                    // Pop open the modal dialog
+                    $(".modal").modal("open");
+                });
+        });
+
+    </script>
 
 </body>
 
