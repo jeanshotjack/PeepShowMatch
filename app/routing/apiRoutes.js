@@ -30,13 +30,13 @@ module.exports = function (app) {
             // assign the match stuff to the empty variable????
             if (math < totalMath) {
 
-                totalMath = diff;
+                totalMath = math;
                 matchName = friends[i].name;
                 matchPhoto = friends[i].photo;
             }
         }
 
         friends.push(newFriend);
-        res.json(newFriend);
+        res.json({matchName: matchName, matchPhoto: matchPhoto});
     });
 }

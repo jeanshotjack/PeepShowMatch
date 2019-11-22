@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="css.css">
     <script src="https://kit.fontawesome.com/aeaf742f13.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    
     <title>Peep Show Friend Finder</title>
 </head>
 
@@ -177,7 +180,7 @@
 
         <h3>Question 13</h3>
         <h6>You are more punctual than leisurely.</h6>
-        <select class="chosen-select" id="q12">
+        <select class="chosen-select" id="q13">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -188,7 +191,7 @@
 
         <h3>Question 14</h3>
         <h6>You are more comfortable before a decision than after one</h6>
-        <select class="chosen-select" id="q12">
+        <select class="chosen-select" id="q14">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -201,18 +204,15 @@
         <br>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+        <button type="submit" class="btn btn-primary" id="submit" data-toggle="modal" data-target="#result"><i class="fa fa-check-circle" aria-hidden="true"></i>
             Submit</button>
 
 
-        <div class="modal" tabindex="-1" role="dialog">
+        <div id="result" class="modal fade" tabindex="1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">You are most like...</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <div id="matchName"></div>
@@ -254,15 +254,15 @@
                 ]
             }
 
-            $.post('/api/friends', newFriend)
-                .then(function (data) {
+            $.post("/api/friends", newFriend, function (data) {
                     console.log("Added data ");
                     console.log(data);
 
-                    $("#matchName").html(data.matchName);
+                    $("#matchName").text(data.matchName);
                     $("#matchPhoto").attr("src", data.matchPhoto);
                     // Pop open the modal dialog
-                    $(".modal").modal("open");
+                    $("#result").show();
+    
                 });
         });
 
