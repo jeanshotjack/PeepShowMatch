@@ -1,0 +1,25 @@
+{
+  "name": "peepshowmatch",
+  "version": "1.0.0",
+  "description": "match yourself to Peep Show character",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanshotjack/PeepShowMatch.git"
+  },
+  "author": "Jack Shalenkova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeanshotjack/PeepShowMatch/issues"
+  },
+  "homepage": "https://github.com/jeanshotjack/PeepShowMatch#readme"
+}
